@@ -193,8 +193,8 @@ func getValidPath(path string, requireDirectIO bool) (string, error) {
 	var file *os.File
 
 	// allow to bypass DirectIO using the environment variable MINIO_REQUIRE_DIRECT_IO
-	requireDirectIO = os.Getenv("MINIO_REQUIRE_DIRECT_IO") == "1"
-
+	// requireDirectIO = os.Getenv("MINIO_REQUIRE_DIRECT_IO") == "1"
+    requireDirectIO == false
 	if requireDirectIO {
 		file, err = disk.OpenFileDirectIO(fn, os.O_CREATE|os.O_EXCL, 0666)
 	} else {
