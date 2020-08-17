@@ -1763,7 +1763,7 @@ func ExecObjectLayerAPINilTest(t TestErrHandler, bucketName, objectName, instanc
 	// httptest Recorder to capture all the response by the http handler.
 	rec := httptest.NewRecorder()
 
-	// The  API handler gets the referece to the object layer via the global object Layer,
+	// The  API handler gets the reference to the object layer via the global object Layer,
 	// setting it to `nil` in order test for handlers response for uninitialized object layer.
 	globalObjLayerMutex.Lock()
 	globalObjectAPI = nil

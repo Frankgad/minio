@@ -192,6 +192,9 @@ func getValidPath(path string, requireDirectIO bool) (string, error) {
 
 	var file *os.File
 
+	// allow to bypass DirectIO using the environment variable MINIO_REQUIRE_DIRECT_IO
+	requireDirectIO = os.Getenv("MINIO_REQUIRE_DIRECT_IO") == "1"
+
 	if requireDirectIO {
 		file, err = disk.OpenFileDirectIO(fn, os.O_CREATE|os.O_EXCL, 0666)
 	} else {
@@ -236,7 +239,7 @@ func isDirEmpty(dirname string) bool {
 // Initialize a new storage disk.
 func newXLStorage(path string, hostname string) (*xlStorage, error) {
 	var err error
-	if path, err = getValidPath(path, true); err != nil {
+	if path, err = getValidPath(path, requireDirectIO); err != nil {
 		return nil, err
 	}
 

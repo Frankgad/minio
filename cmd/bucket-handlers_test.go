@@ -252,7 +252,7 @@ func testHeadBucketHandler(obj ObjectLayer, instanceType, bucketName string, api
 		},
 		// Test case - 3.
 		// Testing for signature mismatch error.
-		// setting invalid acess and secret key.
+		// setting invalid access and secret key.
 		{
 			bucketName:         bucketName,
 			accessKey:          "abcd",
